@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ujjain Trip Form</title>
+  <meta charset="UTF-8">
+  <script>
+    function sendWhatsApp(event) {
+      event.preventDefault(); // Form submit roke
+
+      const name = document.querySelector('input[name="name"]').value.trim();
+      const mobile = document.querySelector('input[name="mobile"]').value.trim();
+      const aavanu = document.querySelector('input[name="aavanu"]:checked');
+
+      if (!name || !mobile || !aavanu) {
+        alert("Badha fields bharva jaruri che.");
+        return;
+      }
+
+      const response = aavanu.value;
+      const message = `Name: ${name}%0AMobile: ${mobile}%0AAavanu che?: ${response}`;
+
+      const whatsappNumber = "919876543210"; // ⬅️ Tamaro number ahiya mukho
+
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <h2>Ujjain Trip Registration Form</h2>
+  <form onsubmit="sendWhatsApp(event)">
